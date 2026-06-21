@@ -1,0 +1,35 @@
+# Query: image_pexels
+# Flags: CaseSensitive WordMatch
+# ContextLines: 1
+
+5 results - 2 files
+
+src\App.tsx:
+   22    sort_order: number;
+   23:   image_pexels: string | null;
+   24  }
+
+   97        <div className="relative h-44 overflow-hidden shrink-0">
+   98:         {product.image_pexels ? (
+   99            <img
+  100:             src={
+  101              product.name === "Maneta"
+  102              ? "/assets/images/moneta.png"
+  103              : product.name === "Tokenlar"
+  104              ? "/assets/images/token.png"
+  105              : product.name === "Donat Key"
+  106              ? "/assets/images/donat_key.png"
+  107              : product.name === "Token Key"
+  108              ? "/assets/images/token_key.png"
+  109              : product.image_pexels
+                }
+                alt={product.name}
+                className="w-full h-full object-cover"
+                loading="lazy"
+    />
+supabase\migrations\20260620115720_extend_products_table.sql:
+   8    ADD COLUMN IF NOT EXISTS sort_order INTEGER DEFAULT 0,
+   9:   ADD COLUMN IF NOT EXISTS image_pexels TEXT;
+  10  
+  11: INSERT INTO products (name, description, category, price_uzs, unit_label, badge_text, has_quantity, accent_color, is_popular, sort_order, image_pexels) VALUES
+  12  -- Funtime.su
